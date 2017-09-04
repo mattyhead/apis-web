@@ -1,1 +1,3 @@
-/* JS File */
+$(function(){
+
+});
