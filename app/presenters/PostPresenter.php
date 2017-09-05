@@ -75,7 +75,14 @@ class PostPresenter extends Nette\Application\UI\Presenter
 
     public function postFormSucceeded($form, $values)
     {
-        $post = $this->database->table('posts')->insert($values);
+        $postId = $this->getParameter('postId');
+
+        if ($postId) {
+            $post = $this->database->table('posts')->get($postId);
+            $post->update($values);
+        } else {
+            $post = $this->database->table('posts')->insert($values);
+        }
 
         $this->flashMessage('Post was published', 'success');
         $this->redirect('show', $post->id);
@@ -88,20 +95,5 @@ class PostPresenter extends Nette\Application\UI\Presenter
             $this->error('Post not found');
         }
         $this['postForm']->setDefaults($post->toArray());
-    }
-
-    public function postFormSucceeded($form, $values)
-    {
-        $postId = $this->getParameter('postId');
-
-        if ($postId) {
-            $post = $this->database->table('posts')->get($postId);
-            $post->update($values);
-        } else {
-            $post = $this->database->table('posts')->insert($values);
-        }
-
-        $this->flashMessage('Post was published', 'success');
-        $this->redirect('show', $post->id);
     }
 }
