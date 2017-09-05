@@ -16,9 +16,9 @@ session:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
-	password:
+	dsn: 'mysql:host=ec2-50-16-71-115.compute-1.amazonaws.com;dbname=apis'
+	user: apis
+	password: 63kIKwVRD56bS8HIBFsef41CvcCGfEW
 	options:
 		lazy: yes
 

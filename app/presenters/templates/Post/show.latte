@@ -1,17 +1,27 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-    <h1 n:block="title">Můj blog</h1>
+<p><a n:href="Homepage:default">← back to posts list</a></p>
 
-    {foreach $posts as $post}
-    <div class="post">
-        <div class="date">{$post->created_at|date:'F j, Y'}</div>
+<div class="date">{$post->created_at|date:'F j, Y'}</div>
 
-        <h2><a href="{link Post:show $post->id}">{$post->title}</a></h2>
+<h1 n:block="title">{$post->title}</h1>
 
-        <div>{$post->content}</div>
-    </div>
+<div class="post">{$post->content}</div>
+
+<h2>Post new comment</h2>
+
+{control commentForm}
+
+<h2>Comments</h2>
+
+<div class="comments">
+    {foreach $comments as $comment}
+        <p><b><a href="mailto:{$comment->email}" n:tag-if="$comment->email">{$comment->name}</a></b> said:</p>
+        <div>{$comment->content}</div>
     {/foreach}
+</div>
+
 {/block}
 
 {block scripts}
