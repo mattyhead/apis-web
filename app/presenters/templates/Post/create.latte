@@ -1,18 +1,9 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-	<a n:href="Post:create">Write new post</a>
-    <h1 n:block="title">Můj blog</h1>
+<h1>New post</h1>
 
-    {foreach $posts as $post}
-    <div class="post">
-        <div class="date">{$post->created_at|date:'F j, Y'}</div>
-
-        <h2><a href="{link Post:show $post->id}">{$post->title}</a></h2>
-
-        <div>{$post->content}</div>
-    </div>
-    {/foreach}
+{control postForm}
 {/block}
 
 {block scripts}
