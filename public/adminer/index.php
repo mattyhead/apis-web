@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) || ! isset($_SERVER['REMOTE_ADDR']) ||
-    ! in_array($_SERVER['REMOTE_ADDR'], ['170.115.248.24', '71.175.71.185', '127.0.0.1', '::1'], true)) {
+    ! in_array($_SERVER['REMOTE_ADDR'], ['170.115.248.20', '170.115.248.21', '170.115.248.22', '170.115.248.23', '170.115.248.24', '170.115.248.25', '71.175.71.185', '127.0.0.1', '::1'], true)) {
     header('HTTP/1.1 403 Forbidden');
     echo 'Adminer is available only from localhost';
     for ($i = 2e3; $i; $i--) {
